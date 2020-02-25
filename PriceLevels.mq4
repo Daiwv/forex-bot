@@ -5,7 +5,7 @@ string GV_PriceLevels_Auth_Name = "GV_PriceLevels_Auth_" + Symbol();
 
 void GetPriceLevelsDataFromServer() {
    string query = "filter=symbol|" + Symbol();
-   string url = "http://localhost:80/GET_signals?" + query;
+   string url = "http://localhost:xx/[hidden]?" + query;
    int res = WebRequest("GET",url,cookie,NULL,timeout,post,0,result,headers);
    if (res == -1) {
       Print("Error in WebRequest. Error code: ",GetLastError());
@@ -30,7 +30,7 @@ void UpdateServerSignals() {
    query += "&target=bands|" + bandsTrend;
    query += ",ema|" + emaTrend;
    query += "&flag=silent";
-   string url = "http://localhost:80/REPLACE_signals?" + query;
+   string url = "http://localhost:xx/[hidden]?" + query;
    int res = WebRequest("POST",url,cookie,NULL,timeout,post,0,result,headers);
    if (res == -1) {
       Print("Error in WebRequest. Error code: ",GetLastError());
@@ -39,7 +39,7 @@ void UpdateServerSignals() {
 
 void UpdateGVPriceLevels() {
    string query = "filter=symbol|" + Symbol();
-   string url = "http://localhost:80/GET_signals?" + query;
+   string url = "http://localhost:xx/[hidden]?" + query;
    int res = WebRequest("GET",url,cookie,NULL,timeout,post,0,result,headers);
    if (res == -1) {
       Print("Error in WebRequest. Error code: ",GetLastError());
@@ -76,7 +76,7 @@ void ResetGVPriceLevels(string type) {
    if (type == "auth") query += "&target=auth|0";
    if (type == "rejected") query += "&target=rejected|0";
    //query += "&flag=silent";
-   string url = "http://localhost:80/REPLACE_signals?" + query;
+   string url = "http://localhost:xx/[hidden]?" + query;
    int res = WebRequest("POST",url,cookie,NULL,timeout,post,0,result,headers);
    if (res == -1) {
       Print("Error in WebRequest. Error code: ",GetLastError());
@@ -124,7 +124,7 @@ void TrailTriggerHit(double trigger) {
       GlobalVariableSet(GV_PriceLevels_TriggerHit_Name, 1);
       GlobalVariableSet(GV_PriceLevels_TriggerHitTime_Name, Time[0]);
       string query = "&target=triggerHit|1";
-      string url = "http://localhost:80/REPLACE_signals?" + query;
+      string url = "http://localhost:xx/[hidden]?" + query;
       int res = WebRequest("POST",url,cookie,NULL,timeout,post,0,result,headers);
       if (res == -1) {
          Print("Error in WebRequest. Error code: ",GetLastError());
